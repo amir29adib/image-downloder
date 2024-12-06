@@ -8,7 +8,7 @@ export class SearchController {
   constructor(private searchService: SearchService) {}
 
   @Post()
-  @ApiResponse({ status: 201 })
+  @ApiResponse({ status: 201, description: 'Images downloaded successfully.' })
   @ApiBody({
     type: SearchInfoDto,
     description: 'Json structure for login object',

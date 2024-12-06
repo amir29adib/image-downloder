@@ -397,6 +397,8 @@ Temporary Items
 =======
 # Local
 .env
+.env.local
+.env.*.local
 dist
 .webpack
 .serverless/**/*.zip

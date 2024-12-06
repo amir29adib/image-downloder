@@ -5,20 +5,17 @@ import {
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { UserId } from './model/user-id';
-import { Username } from './model/username';
-import { Password } from './model/password';
 
 @Entity('users')
 export class UserEntity {
   @PrimaryColumn('uuid')
-  id!: UserId;
+  id!: string;
 
   @Column({ unique: true })
-  username!: Username;
+  username!: string;
 
   @Column()
-  password!: Password;
+  password!: string;
 
   @CreateDateColumn()
   createdAt!: Date;

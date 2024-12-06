@@ -5,7 +5,6 @@ import {
 } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import { SignUpUserDto } from './dto/sign-up.dto';
-import { UserId } from 'src/user/model/user-id';
 import { LoginUserDto } from './dto/login.dto';
 import { compare } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
@@ -17,7 +16,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async signup(dto: SignUpUserDto): Promise<UserId> {
+  async signup(dto: SignUpUserDto): Promise<boolean> {
     return this.userService.createUser({
       ...dto,
     });
@@ -25,7 +24,7 @@ export class AuthService {
   async login(dto: LoginUserDto): Promise<{ access_token: string }> {
     const user = await this.userService.findUserByUsername(dto.username);
     if (user === null) {
-      throw new NotFoundException(`User ${dto.username} not found`);
+      throw new NotFoundException('User is not found');
     }
 
     if (!(await compare(dto.password, user.password))) {

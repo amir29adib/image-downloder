@@ -1,8 +1,6 @@
-import { UserId } from './user-id';
-import { Username } from './username';
 
 export interface User {
-  id: UserId;
-  username: Username;
+  id: string;
+  username: string;
   password: string;
 }
